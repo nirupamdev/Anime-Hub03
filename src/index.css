@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-primary: #7C3AED;
+  --color-brand-secondary: #A855F7;
+  --color-brand-dark: #5B21B6;
+  
+  --color-bg-dark: #0B0B0F;
+  --color-bg-card: #12121A;
+  --color-bg-tertiary: #1A1A24;
+  
+  --color-text-dim: #A1A1AA;
+  --color-border-subtle: #2A2A35;
+  
+  --color-glow-purple: rgba(124, 58, 237, 0.35);
+  --color-glass: rgba(255, 255, 255, 0.03);
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-white font-sans antialiased;
+    background-image: 
+      radial-gradient(circle at top right, rgba(124, 58, 237, 0.15) 0%, transparent 60%),
+      radial-gradient(circle at 50% -20%, rgba(124, 58, 237, 0.12) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+.anime-card-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--color-border-subtle);
+}
+
+.glass-panel {
+  @apply bg-[#0B0B0F]/80 backdrop-blur-xl border-b border-border-subtle;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-[#7C3AED] to-[#A855F7];
+}
+
+.bg-accent-gradient {
+  background: linear-gradient(135deg, #7C3AED, #A855F7);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.35);
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(124, 58, 237, 0.05), transparent);
+  animation: scanline 12s linear infinite;
+  pointer-events: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
